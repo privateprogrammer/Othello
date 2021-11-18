@@ -7,13 +7,16 @@ using std::vector;
 
 class Board {
  public:
-  Board* GetInstance();
-  vector<vector<int>> GetBoard();
+  static Board* GetInstance();
+  vector< vector<int> > GetBoard();
+  void ShowBoard();
+  void SetBoard(int size);
+  void ReturnBoard();
 
  private:
   Board();
-  Board* instance_;
-  vector<vector<int>> board_;
+  static Board* instance_;
+  vector< vector<int> > board_;
 };
 
 #endif  // _BOARD_H_
