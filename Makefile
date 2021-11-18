@@ -35,14 +35,16 @@ gtest_main.a : gtest-all.o gtest_main.o
 Board.o : Board.cpp
 	g++ -std=c++17 -c $^
 
+#
+Info.o : Info.cpp
+	g++ -std=c++17 -c $^
+
 # 플레이어 그 자체
 Player.o : Player.cpp
 	g++ -std=c++17 -c $^
 
-PlayerA.o : PlayerA.cpp
-	g++ -std=c++17 -c $^
-
-PlayerB.o : PlayerB.cpp
+# 전체 플레이어
+AllPlayer.o : AllPlayer.cpp
 	g++ -std=c++17 -c $^
 
 # Util 그 자체
@@ -50,7 +52,7 @@ Util.o : Util.cpp
 	g++ -std=c++17 -c $^ 
 
 
-main : main.cc Board.o Player.o PlayerA.o PlayerB.o Util.o
+main : main.cpp Board.o Info.o Player.o AllPlayer.o Util.o
 	g++ -std=c++17 -o $@ $^
 
 # TODO: Change 'calc_test.cc' to your test file
