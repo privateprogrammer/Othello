@@ -32,21 +32,21 @@ gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
 # 보드 그 자체
-Board.o : Board.cc
+Board.o : Board.cpp
 	g++ -std=c++17 -c $^
 
 # 플레이어 그 자체
-Player.o : Player.cc
+Player.o : Player.cpp
 	g++ -std=c++17 -c $^
 
-PlayerA.o : PlayerA.cc
+PlayerA.o : PlayerA.cpp
 	g++ -std=c++17 -c $^
 
-PlayerB.o : PlayerB.cc
+PlayerB.o : PlayerB.cpp
 	g++ -std=c++17 -c $^
 
 # Util 그 자체
-Util.o : Util.cc 
+Util.o : Util.cpp 
 	g++ -std=c++17 -c $^ 
 
 
@@ -54,7 +54,7 @@ main : main.cc Board.o Player.o PlayerA.o PlayerB.o Util.o
 	g++ -std=c++17 -o $@ $^
 
 # TODO: Change 'calc_test.cc' to your test file
-CarTest.o : CarTest.cc $(GTEST_HEADERS)
+CarTest.o : CarTest.cpp $(GTEST_HEADERS)
 	g++ $(CPPFLAGS) $(CXXFLAGS) --std=c++17 -c CarTest.cc -o $@
 
 # TODO: Change 'calc_test.o' and 'calc.o' to your object targets
