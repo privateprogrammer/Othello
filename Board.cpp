@@ -31,22 +31,55 @@ void Board::SetBoard(int flag, int x, int y){
 }
 
 void Board::ReturnBoard(){
-  vector< vector<int> > tmp_vector = Board::GetBoard();
-  for (int i = 0; i < tmp_vector.size() ; i++){
-    for(int j = 0; j < tmp_vector[i].size(); j++) {
-      if (tmp_vector[i][j] == 3) {
-        tmp_vector[i][j] = 0;
+  for (int i = 0; i < Board::GetBoard().size() ; i++){
+    for(int j = 0; j < Board::GetBoard()[i].size(); j++) {
+      if (Board::GetBoard()[i][j] == 3) {
+        Board::GetBoard()[i][j] = 0;
       }
     }
   }
 }
 
 void Board::ShowBoard(){
-  vector< vector<int> > tmp_vector = Board::GetBoard();
-  for (int i = 0; i < tmp_vector.size() ; i++){
-    for(int j = 0; j < tmp_vector[i].size(); j++) {
-      cout << tmp_vector[i][j] << " ";
+  for (int i = 0; i < Board::GetBoard().size() ; i++){
+    for(int j = 0; j < Board::GetBoard()[i].size(); j++) {
+      cout << Board::GetBoard()[i][j] << " ";
     }
     cout << "\n";
   }
 }
+
+bool Board::IsBoardFull(){
+  for (int i = 0; i < Board::GetBoard().size() ; i++){
+    for(int j = 0; j < Board::GetBoard()[i].size(); j++) {
+      if (Board::GetBoard()[i][j] == 0) {
+        //하나라도 0이라면 돌이 꽉 찼음.
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+bool Board::IsBoardOneColor(){
+  int player1 = 0;
+  int player2 = 0;
+  for (int i = 0; i < Board::GetBoard().size() ; i++){
+    for(int j = 0; j < Board::GetBoard()[i].size(); j++) {
+      if (Board::GetBoard()[i][j] == 0) {
+        continue;
+      }
+      if (Board::GetBoard()[i][j] == 1) {
+        player1++;
+      }
+      if (Board::GetBoard()[i][j] == 2) {
+        player2++;
+      }
+    }
+  }
+  if (player1 != 0 && player2 != 0) {
+    return false;
+  }
+  return true;
+}
+
