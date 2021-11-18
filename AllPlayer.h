@@ -1,11 +1,11 @@
-#ifndef _PLAYER_H_
-#define _PLAYER_H_
+#ifndef _ALLPLAYER_H_
+#define _ALLPLAYER_H_
 
 #include <string>
 
 using std::string;
 
-class Player : public Info {
+class AllPlayer : public Info {
  public:
   void SetScore();
   int GetScore();
@@ -20,4 +20,4 @@ class Player : public Info {
   string color_;
 };
 
-#endif  // _PLAYER_H_
+#endif  // _ALLPLAYER_H_
