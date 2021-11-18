@@ -2,7 +2,6 @@
 #define _UTIL_H_
 
 #include <vector>
-#include "Point.h"
 #include "Player.h"
 #include "Board.h"
 
