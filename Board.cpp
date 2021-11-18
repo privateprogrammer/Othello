@@ -43,7 +43,15 @@ void Board::ReturnBoard(){
 void Board::ShowBoard(){
   for (int i = 0; i < Board::GetBoard().size() ; i++){
     for(int j = 0; j < Board::GetBoard()[i].size(); j++) {
-      cout << Board::GetBoard()[i][j] << " ";
+      if(Board::GetBoard()[i][j] == 0){
+        cout << " " << " ";
+      } else if (Board::GetBoard()[i][j] == 1){
+        cout << "O" << " ";
+      } else if (Board::GetBoard()[i][j] == 2) {
+        cout << "X" << " ";
+      } else {
+        cout << "*" << " ";
+      }
     }
     cout << "\n";
   }
@@ -82,4 +90,3 @@ bool Board::IsBoardOneColor(){
   }
   return true;
 }
-
