@@ -18,12 +18,16 @@ vector< vector<int> > Board::GetBoard(){
   return Board::board_;
 }
 
-void Board::SetBoard(int size){
+void Board::MakeBoard(int size){
   vector< vector<int> > tmp_vector;
   for (int i = 0; i < size; i++){
     tmp_vector.push_back(vector<int>(size, 0));
   }
   board_ = tmp_vector;
+}
+
+void Board::SetBoard(int flag, int x, int y){
+  board_[x][y] = flag+1;
 }
 
 void Board::ReturnBoard(){
