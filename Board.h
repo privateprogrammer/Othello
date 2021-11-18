@@ -10,8 +10,10 @@ class Board {
   static Board* GetInstance();
   vector< vector<int> > GetBoard();
   void ShowBoard();
-  void SetBoard(int size);
+  void MakeBoard(int size);
+  void SetBoard(int flag, int x, int y);
   void ReturnBoard();
+  void UpdateBoard(); //플레이어가 돌을 두면 판을 바꿈
 
  private:
   Board();

@@ -32,3 +32,12 @@
 *.app
 
 *.swp
+
+.vscode
+
+main
+AllPlayer
+Player
+Info
+Util
+Board

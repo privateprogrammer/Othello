@@ -10,6 +10,17 @@
 
 ### function
 
+```C++
+static Board* GetInstance();
+vector< vector<int> > GetBoard();
+void ShowBoard(); //판을 보여줌
+void MakeBoard(int size); //size에 맞게 판을 만듦.
+void SetBoard(int flag, int x, int y);
+//flag는 현재 플레이어가 누군지, x, y좌표에 돌 놓기
+void ReturnBoard();
+void UpdateBoard(); //플레이어가 돌을 두면 판을 바꿈
+```
+
 ---
 
 ### member field
