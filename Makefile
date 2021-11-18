@@ -1,5 +1,5 @@
 # TODO: Set your googletest directory path
-GTEST_DIR=/home/longnew/practice/TERM/googletest/googletest
+GTEST_DIR=(Own your own)
 
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
@@ -31,34 +31,26 @@ gtest.a : gtest-all.o
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
-Part.o : Part.cc
+# 보드 그 자체
+Board.o : Board.cc
 	g++ -std=c++17 -c $^
 
-Door.o : Door.cc
+# 플레이어 그 자체
+Player.o : Player.cc
 	g++ -std=c++17 -c $^
 
-Roof.o : Roof.cc
+PlayerA.o : PlayerA.cc
 	g++ -std=c++17 -c $^
 
-Wheel.o : Wheel.cc
+PlayerB.o : PlayerB.cc
 	g++ -std=c++17 -c $^
 
-Car.o : Car.cc
+# Util 그 자체
+Util.o : Util.cc 
 	g++ -std=c++17 -c $^ 
 
-CarBuilder.o : CarBuilder.cc
-	g++ -std=c++17 -c $^
 
-CarPartsFactory.o : CarPartsFactory.cc
-	g++ -std=c++17 -c $^
-
-HyundaiPartsFactory.o : HyundaiPartsFactory.cc 
-	g++ -std=c++17 -c $^
-
-KiaPartsFactory.o : KiaPartsFactory.cc
-	g++ -std=c++17 -c $^
-
-main : main.cc Part.o Roof.o Wheel.o Door.o Car.o CarBuilder.o CarPartsFactory.o HyundaiPartsFactory.o KiaPartsFactory.o
+main : main.cc Board.o Player.o PlayerA.o PlayerB.o Util.o
 	g++ -std=c++17 -o $@ $^
 
 # TODO: Change 'calc_test.cc' to your test file
