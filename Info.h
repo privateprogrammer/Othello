@@ -7,7 +7,7 @@ using std::string;
 
 class Info {
  public:
-  explicit Info(int score, string name_, string color_);
+  explicit Info(int score, string name, string color);
   void SetScore(int score);
   int GetScore();
   void SetName(string name);
