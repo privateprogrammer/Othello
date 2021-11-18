@@ -7,13 +7,14 @@ using std::string;
 
 class Info {
  public:
-  void SetScore();
+  explicit Info(int score, string name_, string color_);
+  void SetScore(int score);
   int GetScore();
-  void SetName();
+  void SetName(string name);
   string GetName();
-  void SetColor();
+  void SetColor(string color);
   string GetColor();
-  virtual void GetInfo();
+  virtual void GetInfo() = 0;
 
  private:
   int score_;

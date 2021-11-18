@@ -7,6 +7,7 @@ using std::string;
 
 class Player : public Info {
  public:
+  Player(int score, string name, string color);
   void GetInfo override();
 };
 
