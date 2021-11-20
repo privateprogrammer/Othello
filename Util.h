@@ -2,25 +2,31 @@
 #define _UTIL_H_
 
 #include <vector>
-#include "Player.h"
+#include "AllPlayer.h"
 #include "Board.h"
 
 using std::string;
+using std::pair;
 
 class Util {
  public:
+  Util();
   void Init();
-  bool SetName();
-  bool MakeBoard();
+  void SetName();
+  void MakeBoard();
+  bool InputXY();
+  bool CheckCondition();
+
+  void UpdateScore();
   void TogglePlayer();
   void PrintBoard();
-  int ShowValidXY();
-  bool InputXY();
+  bool ShowValidXY(int x, int y);
   void ToggleStone(int x, int y);
 
  private:
-  int x_, y_, flag, is_finished_;
-  vector<Player> players_;
+  int x_, y_, flag_, is_finished_;
+  AllPlayer* players_;
+  vector<pair<int, int>> place_valid_;
   Board* board_;
 };
 
