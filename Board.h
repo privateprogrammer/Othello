@@ -16,6 +16,7 @@ class Board {
   void UpdateBoard(); //플레이어가 돌을 두면 판을 바꿈
   bool IsBoardFull();
   bool IsBoardOneColor();
+  int CheckMyScore(int flag);
 
  private:
   Board();
