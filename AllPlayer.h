@@ -12,8 +12,13 @@ using std::vector;
 
 class AllPlayer : public Info {
  public:
-  AllPlayer(int score, string name, string color, Player* p1, Player* p2);
+  AllPlayer(string name, Player* p1, Player* p2);
+  string GetPlayerName(int flag);
   void GetInfo() override;
+  void SetScore(int flag, int score);
+  int GetScore(int flag);
+  void Winner();
+
  private:
   vector<Player*> players_;
 };
