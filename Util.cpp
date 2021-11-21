@@ -29,6 +29,10 @@ void Util::Init(){
 	string start = "y";
 
 	while(true){
+		this -> flag_ = 0;
+		this -> x_ = 0;
+		this -> y_ = 0;
+		this -> is_finished_ = 0;
 		if ((start.compare("N") == 0) || (start.compare("n") == 0)){
 			cout << "게임을 종료 합니다." << endl;
 			break;
