@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include <fstream>
 
 #include "Player.h"
 #include "Util.h"
@@ -13,13 +14,17 @@ using std::vector;
 using std::string;
 using std::pair;
 using std::make_pair;
+using std::ofstream;
+using std::to_string;
 
 Util::Util(){
 	this -> x_ = 0;
 	this -> y_ = 0;
 	this -> is_finished_ = 0;
 	this -> flag_ = 0;
-	this -> players_;
+	Player *p1 = new Player(2, "NULL", "0");
+	Player *p2 = new Player(2, "NULL", "1");
+	this -> players_ = new AllPlayer("All", p1, p2);
   this -> place_valid_;
   this -> board_ = Board::GetInstance();
 }
@@ -37,10 +42,23 @@ void Util::Init(){
 			cout << "게임을 종료 합니다." << endl;
 			break;
 		}
-		
+		// 게임 내의 상황을 기록 하는 로그 txt파일을 염.
+		ofstream fout;
+		fout.open("z_log.txt");
+
 		// 1. 게임시작 파트
 		this -> MakeBoard();
 		this -> SetName();
+		
+		// 보드 사이즈 로그에 기록.
+		vector<vector<int>> add_board = board_ -> GetBoard();
+		int board_size = add_board.size();
+		fout << board_size << endl;
+
+		// 플레이어 두 명의 이름 로그에 기록
+		fout << this -> players_ -> GetPlayerName(0) << endl;
+		fout << this -> players_ -> GetPlayerName(1) << endl;
+		
 
 		// 2. 플레이어 입력
 		// 게임 진행은 끝나는 조건을 만날 때 까지 진행.
@@ -63,7 +81,7 @@ void Util::Init(){
 			}
 
 			this -> ToggleStone(this -> x_, this -> y_);
-
+			fout << this -> x_<< " " << this -> y_ << endl;
 			this -> board_ -> ReturnBoard();
 
 			// 점수 출력.
@@ -75,6 +93,7 @@ void Util::Init(){
 
 		// 누가 이겼는지 말해줘야 함. 점수 계산 함수????
 		this -> players_ -> Winner();
+		fout.close();
 
 		cout << endl;
 		cout << "게임을 계속 하시겠습니까? (Y / N) : ";
@@ -92,13 +111,11 @@ void Util::SetName(){
 	// 초기 점수는 0점으로 시작.
 	cout << "Player 1 Name: ";
 	cin >> temp_name;
-	Player *p1 = new Player(2, temp_name, "0");
+	players_ -> SetPlayerName(0, temp_name);
 
 	cout << "Player 2 Name: ";
 	cin >> temp_name;
-	Player *p2 = new Player(2, temp_name, "1");
-
-	this -> players_ = new AllPlayer("All", p1, p2);
+	players_ -> SetPlayerName(1, temp_name);
 }
 
 void Util::MakeBoard(){
