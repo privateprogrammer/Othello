@@ -14,6 +14,7 @@ class AllPlayer : public Info {
  public:
   AllPlayer(string name, Player* p1, Player* p2);
   string GetPlayerName(int flag);
+  void SetPlayerName(int flag, string play_name);
   void GetInfo() override;
   void SetScore(int flag, int score);
   int GetScore(int flag);
