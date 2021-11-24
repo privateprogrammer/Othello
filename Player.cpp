@@ -12,20 +12,20 @@ using std::to_string;
 Player::Player(int score, string name, string color)
 : Info(name), score_(score), color_(color) {}
 
-void Player::SetColor(string color) { 
-  this->color_ = color; 
+void Player::SetColor(string color) {
+  this->color_ = color;
 }
 
-string Player::GetColor() { 
-  return this->color_; 
+string Player::GetColor() {
+  return this->color_;
 }
 
-void Player::SetScore(int score) { 
-  this->score_ = score; 
+void Player::SetScore(int score) {
+  this->score_ = score;
 }
 
-int Player::GetScore() { 
-  return this->score_; 
+int Player::GetScore() {
+  return this->score_;
 }
 
 void Player::GetInfo() {

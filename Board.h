@@ -13,7 +13,7 @@ class Board {
   void MakeBoard(int size);
   void SetBoard(int flag, int x, int y);
   void ReturnBoard();
-  void UpdateBoard(); //플레이어가 돌을 두면 판을 바꿈
+  void UpdateBoard();  // 플레이어가 돌을 두면 판을 바꿈
   bool IsBoardFull();
   bool IsBoardOneColor();
   int CheckMyScore(int flag);
@@ -24,4 +24,4 @@ class Board {
   vector< vector<int> > board_;
 };
 
-#endif  // _BOARD_H_
+#endif  //  _BOARD_H_

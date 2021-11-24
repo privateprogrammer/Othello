@@ -2,6 +2,8 @@
 #define _UTIL_H_
 
 #include <vector>
+#include <string>
+#include <utility>
 #include "AllPlayer.h"
 #include "Board.h"
 

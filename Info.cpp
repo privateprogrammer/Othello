@@ -5,7 +5,7 @@
 using std::string;
 
 // 생성자
-Info::Info(string name) : name_(name){}
+Info::Info(string name) : name_(name) {}
 
 // Getter Setter 지정
 void Info::SetName(string name) { this->name_ = name; }
