@@ -13,6 +13,7 @@ class Player : public Info {
   void SetScore(int score);
   int GetScore();
   void GetInfo() override;
+  ~Player();
 
  private:
   int score_;
