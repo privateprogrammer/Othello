@@ -11,6 +11,7 @@
 ### function
 
 ```C++
+Board(); // 기본 생성자
 static Board* GetInstance();
 vector< vector<int> > GetBoard();
 void ShowBoard(); //판을 보여줌
@@ -27,7 +28,8 @@ void UpdateBoard(); //플레이어가 돌을 두면 판을 바꿈
 ### member field
 
 ```C++
-static instance_
+static Board* instance_;
+vector< vector<int> > board_;
 ```
 <br><br>
 
@@ -65,6 +67,7 @@ void ToggleStone(int x, int y): 돌 뒤집기
 int x_, int y_ : 현재 입력 받은 돌 좌표
 int is_finished_ : ShowValidXY 갯수 세기
 AllPlayer players_ : All플레이어 객체 
+vector<pair<int, int>> place_valid_ : 놓을 수 있는 공간들의 벡터
 Board* board_ : 보드 객체를 가지고 있음.
 ```
 
