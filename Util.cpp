@@ -5,6 +5,7 @@
 #include <fstream>
 #include <utility>
 
+#include "stdlib.h"
 #include "Player.h"
 #include "Util.h"
 
@@ -62,7 +63,10 @@ void Util::Init() {
     // 2. 플레이어 입력
     // 게임 진행은 끝나는 조건을 만날 때 까지 진행.
     // 플레이어의 색깔은 flag_로 판별.
-    while (this -> CheckCondition()) {
+    while (true) {
+	  system("clear");
+	  if (!(this -> CheckCondition())) break;
+
       if (this -> place_valid_.size() == 0) {
         this -> PrintBoard();
         cout << "놓을 수 있는 공간이 없습니다." << endl;
@@ -120,13 +124,18 @@ void Util::MakeBoard() {
   // 보드의 사이즈 입력 (짝수 && num >=4 && num <= 20)
   // cin을 통해 입력
   // board_ instance_를 호출해서 배열 생성.
+  // 입력문이 string일 경우 무한루프가 발생.
+  // 입력을 string값으로 받고 숫자인지 판별해야함.
+  string input = "";
   int board_size = 0;
 
   cout << "보드의 사이즈를 지정해주세요. : ";
-  cin >> board_size;
+  cin >> input;
+  board_size = atoi(input.c_str());
   while (board_size % 2 == 1 || board_size < 4 || board_size > 20) {
     cout << "6 ~ 18 사이의 짝수를 입력해주세요. : ";
-    cin >> board_size;
+    cin >> input;
+    board_size = atoi(input.c_str());
   }
   this -> board_ -> MakeBoard(board_size);
 }
@@ -139,9 +148,17 @@ bool Util::InputXY() {
   // 1. 보드 내부의 값
   // 2. 보드의 값이 3
   // 인지 확인을 해서 둘 다 만족하면 true, 아니면 false
+  string x_input = "";
+  string y_input = "";
 
   cout << "x, y 좌표를 입력하세요 : ";
-  cin >> this -> x_ >> this -> y_;
+  cin >> x_input >> y_input;
+
+  if (atoi(x_input.c_str()) == 0 && x_input.compare("0") != 0) return false;
+  if (atoi(y_input.c_str()) == 0 && y_input.compare("0") != 0) return false;
+
+  this -> x_ = atoi(x_input.c_str());
+  this -> y_ = atoi(y_input.c_str());
 
   vector< vector<int> > add_board = board_ -> GetBoard();
   int board_size = add_board.size();
@@ -176,9 +193,12 @@ bool Util::CheckCondition() {
   cout << endl;
   // 놓을 수 있는 공간 없으면 + 업데이트.
   // 놓을 수 있으면 다시 0으로 초기화.
+
+  cout << "놓을 수 있는 경우의 수" << endl;
   for (int i = 0; i < this -> place_valid_.size(); i++) {
-    cout << this -> place_valid_[i].first << " " << this -> place_valid_[i].second << endl;
+    cout << this -> place_valid_[i].first << " " << this -> place_valid_[i].second << "\t";
   }
+  cout << endl;
 
   if (this -> place_valid_.size() == 0)
     this -> is_finished_++;
