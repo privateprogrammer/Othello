@@ -100,7 +100,15 @@ void Util::Init() {
     cout << endl;
     cout << "게임을 계속 하시겠습니까? (Y / N) : ";
     cin >> start;
+
+    while (!(start.compare("Y") == 0 || start.compare("N") == 0 ||
+             start.compare("y") == 0 || start.compare("n") == 0)) {
+      cout << "Y 또는 N을 입력해주세요." << endl;
+      cout << "게임을 계속 하시겠습니까? (Y / N) : ";
+      cin >> start;
+    }
   }
+  delete this -> players_;
 }
 
 void Util::SetName() {
