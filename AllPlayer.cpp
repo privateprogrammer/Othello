@@ -41,8 +41,7 @@ void AllPlayer::GetInfo() {
   for (int i = 0; i < players_.size(); i++) {
     string ret = "Player ";
 
-    ret += players_[i] -> GetName() + "(" + players_[i] -> GetColor() + ")" +
-    " : " + to_string(players_[i] -> GetScore());
+    ret += players_[i] -> GetName() + " : " + to_string(players_[i] -> GetScore());
     cout << ret << endl;
   }
   cout << "\"\"\"" << endl;
@@ -52,7 +51,7 @@ void AllPlayer::Winner() {
   string ret = "Player ";
   // 무승부의 경우
   if (players_[1] -> GetScore() ==  players_[0] -> GetScore()) {
-    ret += players_[0] -> GetName() + "(" + players_[1] -> GetColor() + ")" + " : " + to_string(players_[0] -> GetScore() - players_[1] -> GetScore()) + "으로 무승부입니다.";
+    ret += players_[0] -> GetName() + " : " + to_string(players_[0] -> GetScore() - players_[1] -> GetScore()) + "으로 무승부입니다.";
     cout << ret << endl;
   }
 
@@ -63,6 +62,6 @@ void AllPlayer::Winner() {
     j = 0;
   }
 
-  ret += players_[i] -> GetName() + "(" + players_[i] -> GetColor() + ")" + " : " + to_string(players_[i] -> GetScore() - players_[j] -> GetScore()) + "의 점수차로 승리하였습니다.";
+  ret += players_[i] -> GetName() + " : " + to_string(players_[i] -> GetScore() - players_[j] -> GetScore()) + "의 점수차로 승리하였습니다.";
   cout << ret << endl;
 }

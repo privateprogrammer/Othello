@@ -146,8 +146,6 @@ string name_;
 
 ```C++
 Player(int score, string name, string color) : 이름, 점수, 색깔을 초기화하는 생성자
-void SetColor(string color) : setter for color
-string GetColor() : getter for color
 void SetScore(int score) : setter for score
 int GetScore() : getter for score
 void GetInfo() override : 객체의 정보를 출력
@@ -159,7 +157,6 @@ void GetInfo() override : 객체의 정보를 출력
 
 ```C++
 int score_
-string color_
 ```
 <br>
 

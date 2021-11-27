@@ -24,8 +24,8 @@ Util::Util() {
   this -> y_ = 0;
   this -> is_finished_ = 0;
   this -> flag_ = 0;
-  Player *p1 = new Player(2, "NULL", "0");
-  Player *p2 = new Player(2, "NULL", "1");
+  Player *p1 = new Player(2, "NULL");
+  Player *p2 = new Player(2, "NULL");
   this -> players_ = new AllPlayer("All", p1, p2);
   this -> place_valid_;
   this -> board_ = Board::GetInstance();
