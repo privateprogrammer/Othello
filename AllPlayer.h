@@ -19,6 +19,7 @@ class AllPlayer : public Info {
   void SetScore(int flag, int score);
   int GetScore(int flag);
   void Winner();
+  ~AllPlayer();
 
  private:
   vector<Player*> players_;

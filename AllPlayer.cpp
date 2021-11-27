@@ -65,3 +65,8 @@ void AllPlayer::Winner() {
   ret += players_[i] -> GetName() + " : " + to_string(players_[i] -> GetScore() - players_[j] -> GetScore()) + "의 점수차로 승리하였습니다.";
   cout << ret << endl;
 }
+
+AllPlayer::~AllPlayer() {
+  delete players_[0];
+  delete players_[1];
+}
