@@ -74,9 +74,9 @@ void Board::ShowBoard() {
       if (Board::GetBoard()[i - 1][j - 1] == 0) {
         cout << "." << " ";
       } else if (Board::GetBoard()[i - 1][j - 1] == 1) {
-        cout << "O" << " ";
+        cout << "○" << " ";
       } else if (Board::GetBoard()[i - 1][j - 1] == 2) {
-        cout << "X" << " ";
+        cout << "●" << " ";
       } else {
         cout << "*" << " ";
       }
