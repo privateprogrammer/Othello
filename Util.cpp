@@ -64,20 +64,22 @@ void Util::Init() {
     // 게임 진행은 끝나는 조건을 만날 때 까지 진행.
     // 플레이어의 색깔은 flag_로 판별.
     while (true) {
-	  system("clear");
-	  if (!(this -> CheckCondition())) break;
+    system("clear");
+    if (!(this -> CheckCondition())) break;
 
       if (this -> place_valid_.size() == 0) {
         this -> PrintBoard();
         cout << "놓을 수 있는 공간이 없습니다." << endl;
 
         this -> TogglePlayer();
-        cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어의 차례입니다." << endl;
+        cout << this -> players_ -> GetPlayerName(flag_)
+        << " 플레이어의 차례입니다." << endl;
         continue;
       }
 
       this -> PrintBoard();
-      cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어의 차례입니다." <<  endl;
+      cout << this -> players_ -> GetPlayerName(flag_)
+      << " 플레이어의 차례입니다." <<  endl;
 
       while (!this -> InputXY()) {
         cout << "옳은 선택이 아닙니다." << endl;
@@ -172,7 +174,13 @@ bool Util::InputXY() {
   int board_size = add_board.size();
 
   // 입력한 공간이 보드 내부이고 3으로 업데이트 된 경우에만 true
-  if (this -> x_ >= 0 && this -> x_ < board_size && this -> y_ >= 0 && this -> y_ < board_size && add_board[this -> x_][this -> y_] == 3)
+  if (
+  this -> x_ >= 0 &&
+  this -> x_ < board_size &&
+  this -> y_ >= 0 &&
+  this -> y_ < board_size &&
+  add_board[this -> x_][this -> y_] == 3
+  )
     return true;
 
   return false;
@@ -204,7 +212,8 @@ bool Util::CheckCondition() {
 
   cout << "놓을 수 있는 경우의 수" << endl;
   for (int i = 0; i < this -> place_valid_.size(); i++) {
-    cout << this -> place_valid_[i].first << " " << this -> place_valid_[i].second << "\t";
+    cout << this -> place_valid_[i].first << " "
+    << this -> place_valid_[i].second << "\t";
   }
   cout << endl;
 
@@ -293,7 +302,12 @@ bool Util::ShowValidXY(int x, int y) {
       temp_y += dy[idx];
 
       // 보드 내부의 위치가 아닌 경우 종료
-      if (temp_x < 0 || temp_x >= board_size || temp_y < 0 || temp_y >= board_size)
+      if (
+        temp_x < 0 ||
+        temp_x >= board_size ||
+        temp_y < 0 ||
+        temp_y >= board_size
+        )
         break;
 
       // 나와 동일한 상대를 만나는 경우 possible 업데이트
@@ -357,7 +371,12 @@ void Util::ToggleStone(int x, int y) {
       temp_x += dx[idx];
       temp_y += dy[idx];
 
-      if (temp_x < 0 || temp_x >= board_size || temp_y < 0 || temp_y >= board_size)
+      if (
+        temp_x < 0 ||
+        temp_x >= board_size ||
+        temp_y < 0 ||
+        temp_y >= board_size
+        )
         break;
 
       if (add_board[temp_x][temp_y] == my_status) {
@@ -380,7 +399,12 @@ void Util::ToggleStone(int x, int y) {
         temp_x += dx[idx];
         temp_y += dy[idx];
 
-        if (temp_x < 0 || temp_x >= board_size || temp_y < 0 || temp_y >= board_size)
+        if (
+          temp_x < 0 ||
+          temp_x >= board_size ||
+          temp_y < 0 ||
+          temp_y >= board_size
+          )
           break;
 
         if (add_board[temp_x][temp_y] == my_status)

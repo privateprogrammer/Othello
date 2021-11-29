@@ -29,4 +29,4 @@ void Player::GetInfo() {
   cout << ret << endl;
 }
 
-Player::~Player() {} 
+Player::~Player() {}
