@@ -64,13 +64,18 @@ void Util::Init() {
     // 게임 진행은 끝나는 조건을 만날 때 까지 진행.
     // 플레이어의 색깔은 flag_로 판별.
     while (true) {
-    system("clear");
-    if (!(this -> CheckCondition())) break;
+      system("clear");
+
+      if (!(this -> CheckCondition())) 
+        break;
 
       if (this -> place_valid_.size() == 0) {
+        string temp;
         this -> PrintBoard();
-        cout << "놓을 수 있는 공간이 없습니다." << endl;
+        cout << "놓을 수 있는 공간이 없습니다." << endl; 
+        cout << "다음 플레이어의 차례로 넘어가도록 입력을 해주세요. : " << endl;
 
+        cin >> temp;
         this -> TogglePlayer();
         cout << this -> players_ -> GetPlayerName(flag_)
         << " 플레이어의 차례입니다." << endl;
@@ -143,7 +148,7 @@ void Util::MakeBoard() {
   cin >> input;
   board_size = atoi(input.c_str());
   while (board_size % 2 == 1 || board_size < 4 || board_size > 20) {
-    cout << "6 ~ 18 사이의 짝수를 입력해주세요. : ";
+    cout << "4 ~ 18 사이의 짝수를 입력해주세요. : ";
     cin >> input;
     board_size = atoi(input.c_str());
   }
@@ -222,8 +227,16 @@ bool Util::CheckCondition() {
   else
     this -> is_finished_ = 0;
   // 턴이 그냥 2번 넘어갔는지
-  if (this -> is_finished_ == 2)
+  if (this -> is_finished_ == 2){
+    string temp;
+    this -> PrintBoard();
+    cout << "턴이 2번 넘어갔습니다. " << endl; 
+    cout << "결과 화면으로 넘어갑니다. 아무 문자나 입력해주세요. : ";
+
+    cin >> temp;
+    cout << endl;
     return false;
+  }
   return true;
 }
 
