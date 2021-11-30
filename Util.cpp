@@ -27,13 +27,15 @@ Util::Util() {
   Player *p1 = new Player(2, "NULL");
   Player *p2 = new Player(2, "NULL");
   this -> players_ = new AllPlayer("All", p1, p2);
-  this -> place_valid_;
   this -> board_ = Board::GetInstance();
 }
 
 void Util::Init() {
   // 선 플레이어 A로 가정.
   string start = "y";
+  string flag_0 = "○";
+  string flag_1 = "●";
+  string use = "";
 
   while (true) {
     this -> flag_ = 0;
@@ -66,14 +68,25 @@ void Util::Init() {
     while (true) {
       system("clear");
 
-      if (!(this -> CheckCondition())) 
+      // 플레이어의 돌을 표현하기 위한 비교.
+      if (this -> flag_ == 0)
+        use = flag_0;
+      else
+        use = flag_1;
+
+      this -> players_ -> GetInfo();
+
+      if (!(this -> CheckCondition()))
         break;
 
       if (this -> place_valid_.size() == 0) {
         string temp;
         this -> PrintBoard();
-        cout << "놓을 수 있는 공간이 없습니다." << endl; 
-        cout << "다음 플레이어의 차례로 넘어가도록 입력을 해주세요. : " << endl;
+        cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어, 돌 : "
+        << use << " 의 차례입니다." <<  endl;
+        cout << endl;
+        cout << "놓을 수 있는 공간이 없습니다." << endl;
+        cout << "다음 플레이어의 차례로 넘어가도록 입력을 해주세요. : ";
 
         cin >> temp;
         this -> TogglePlayer();
@@ -83,8 +96,8 @@ void Util::Init() {
       }
 
       this -> PrintBoard();
-      cout << this -> players_ -> GetPlayerName(flag_)
-      << " 플레이어의 차례입니다." <<  endl;
+      cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어, 돌 : "
+      << use << " 의 차례입니다." <<  endl;
 
       while (!this -> InputXY()) {
         cout << "옳은 선택이 아닙니다." << endl;
@@ -96,7 +109,6 @@ void Util::Init() {
 
       // 점수 출력.
       this -> UpdateScore();
-      this -> players_ -> GetInfo();
       this -> TogglePlayer();
     }
 
@@ -194,24 +206,39 @@ bool Util::InputXY() {
 bool Util::CheckCondition() {
   vector< vector<int> > add_board = board_ -> GetBoard();
   int board_size = add_board.size();
+  string flag_0 = "○";
+  string flag_1 = "●";
+  string use = "";
+
+  // 플레이어의 돌을 표현하기 위한 비교.
+  if (this -> flag_ == 0)
+    use = flag_0;
+  else
+    use = flag_1;
 
   // 모든 공간이 채워졌는지
-  if (board_ -> IsBoardFull()){
+  if (board_ -> IsBoardFull()) {
     string temp;
     this -> PrintBoard();
-    cout << "더 이상 빈 칸이 없습니다. " << endl; 
+    cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어, 돌 : "
+    << use << " 의 차례입니다." <<  endl;
+    cout << endl;
+    cout << "더 이상 빈 칸이 없습니다. " << endl;
     cout << "결과 화면으로 넘어갑니다. 아무 문자나 입력해주세요. : ";
 
     cin >> temp;
     cout << endl;
     return false;
   }
-    
+
   // 모두 동일한색인지
-  if (board_ -> IsBoardOneColor()){
+  if (board_ -> IsBoardOneColor()) {
     string temp;
     this -> PrintBoard();
-    cout << "보드의 색이 모두 동일합니다. " << endl; 
+    cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어, 돌 : "
+    << use << " 의 차례입니다." <<  endl;
+    cout << endl;
+    cout << "보드의 색이 모두 동일합니다. " << endl;
     cout << "결과 화면으로 넘어갑니다. 아무 문자나 입력해주세요. : ";
 
     cin >> temp;
@@ -244,10 +271,13 @@ bool Util::CheckCondition() {
   else
     this -> is_finished_ = 0;
   // 턴이 그냥 2번 넘어갔는지
-  if (this -> is_finished_ == 2){
+  if (this -> is_finished_ == 2) {
     string temp;
     this -> PrintBoard();
-    cout << "턴이 2번 넘어갔습니다. " << endl; 
+    cout << this -> players_ -> GetPlayerName(flag_) << " 플레이어, 돌 : "
+    << use << " 의 차례입니다." <<  endl;
+    cout << endl;
+    cout << "턴이 2번 넘어갔습니다. " << endl;
     cout << "결과 화면으로 넘어갑니다. 아무 문자나 입력해주세요. : ";
 
     cin >> temp;
