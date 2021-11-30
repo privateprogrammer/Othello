@@ -196,11 +196,28 @@ bool Util::CheckCondition() {
   int board_size = add_board.size();
 
   // 모든 공간이 채워졌는지
-  if (board_ -> IsBoardFull())
+  if (board_ -> IsBoardFull()){
+    string temp;
+    this -> PrintBoard();
+    cout << "더 이상 빈 칸이 없습니다. " << endl; 
+    cout << "결과 화면으로 넘어갑니다. 아무 문자나 입력해주세요. : ";
+
+    cin >> temp;
+    cout << endl;
     return false;
+  }
+    
   // 모두 동일한색인지
-  if (board_ -> IsBoardOneColor())
+  if (board_ -> IsBoardOneColor()){
+    string temp;
+    this -> PrintBoard();
+    cout << "보드의 색이 모두 동일합니다. " << endl; 
+    cout << "결과 화면으로 넘어갑니다. 아무 문자나 입력해주세요. : ";
+
+    cin >> temp;
+    cout << endl;
     return false;
+  }
 
   // 입력 가능한 공간을 초기화 해서 판단
   this -> place_valid_.clear();
