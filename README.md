@@ -1,7 +1,7 @@
 # 클래스 다이어그램
+
 <img src="./UML.png">
 <br><br>
-
 
 # 기능구현
 
@@ -39,6 +39,7 @@ int CheckMyScore(int flag) : flag_에 따라 보드에 flag + 1의 상태가 몇
 static Board* instance_
 vector< vector<int> > board_
 ```
+
 <br><br>
 
 ## Util
@@ -65,6 +66,14 @@ void TogglePlayer() : now_player_ 바꿔주기
 void PrintBoard() : board 출력
 bool ShowValidXY(int x, int y) : 둘 수 있는 돌의 좌표 알려주기, valid_ 횟수 세기
 void ToggleStone(int x, int y) : 돌 뒤집기
+
+int x();
+int y();
+int flag();
+int isfinished();
+AllPlayer* allplayers();
+vector< pair<int, int> > placevalid();
+Board* board();
 ```
 
 ### member field
@@ -75,14 +84,14 @@ void ToggleStone(int x, int y) : 돌 뒤집기
 int x_, int y_ : 현재 입력 받은 돌 좌표
 int flag_ : 플레이어 순서를 나타내는 변수
 int is_finished_ : ShowValidXY 갯수 세기
-AllPlayer players_ : AllPlayer 객체 
+AllPlayer players_ : AllPlayer 객체
 vector<pair<int, int>> place_valid_ : 놓을 수 있는 공간들의 벡터
 Board* board_ : 보드 객체를 가지고 있음.
 ```
 
 <br><br>
 
-## Info
+## Info (abstract class)
 
 ---
 
@@ -102,9 +111,10 @@ virtual void GetInfo() = 0 : 각 플레이어의 정보 즉, 객체의 정보를
 ```C++
 string name_ : 플레이어 이름 변수
 ```
+
 <br>
 
-## Player : [Inherit Info]
+## Player : [Inherit Info class]
 
 ---
 
@@ -125,9 +135,10 @@ void GetInfo() override : 객체의 정보를 출력
 ```C++
 int score_ : 플레이어 점수를 저장하는 변수
 ```
+
 <br>
 
-## AllPlayer : [Inherit Info]
+## AllPlayer : [Inherit Info class]
 
 ---
 
@@ -156,15 +167,16 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 <br>
 
 # 예외처리
+
 ```
 1. board size에 대한 예외처리
-  
-  문제점 
-  
+
+  문제점
+
     1) board size가 4 이하일 경우 게임 진행 불가
     2) 홀수인 경우 시작 시 4개의 돌을 중앙에 놓을 수 없음
     3) 보드의 크기가 클수록 게임 진행에 문제가 발생
-  
+
   해결
 
     1) 4이하의 입력에 대해 재입력 요구
@@ -173,19 +185,19 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 
 2. 사용자 입력에 대한 예외처리
-  
-  문제점 
-  
+
+  문제점
+
     1) int형 변수에 string 값이 저장될 경우 무한루프 발생
     2) 사용자가 돌을 놓지 못하는 곳에 돌을 둔 경우
-  
+
   해결
 
     1) string 값으로 먼저 저장하여 입력값이 숫자인지 판단 후 저장
     2) 놓을 수 있는 곳(vector에 저장된 자표)으로 재입력 요구
 
 3. 메모리 누수에 대한 예외처리
-  
+
   문제점
 
     1) Player* p1, p2 객체와 같이 메모리 누수가 발생하는 변수 존재
@@ -200,11 +212,12 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 <br><br>
 
 # 실행 시나리오
+
 ```
 1. 게임 시작
   - 보드의 사이즈 입력
   - 플레이어 이름 입력
-  
+
   - 1. 보드 제작
   - 2. 보드 초기 설정 하는 메소드
 
@@ -214,13 +227,13 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
     - 2. 모든 공간이 채워졌는지
     - 3. 아무것도 하지 않은 턴이 2전 되었는지.
   - 놓을 수 있는 공간 확인
-  - 현재 보드 상황 
-  
+  - 현재 보드 상황
+
   - 입력을 받음
     true
       . 1 놓으려는 좌표 입력
       . 2 놓을 수 있는 공간인지 확인
-        
+
         true -> 공간에 돌을 둠
         false -> 다시 2 - true. 1로 이동
 
@@ -229,7 +242,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
       true -> 게임 종료
       false -> 턴이 넘어간 횟수 업데이트, 플레이어 순서 넘김
-  
+
   - 돌을 뒤집은 후에 "3"으로 업데이트 되었던 값을 다시 0으로 보냄.
 
 3. 게임 종료

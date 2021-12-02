@@ -113,10 +113,10 @@ bool Board::IsBoardOneColor() {
       }
     }
   }
-  if (player1 != 0 || player2 != 0) {
-    return false;
+  if (player1 == 0 || player2 == 0) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 int Board::CheckMyScore(int flag) {

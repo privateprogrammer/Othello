@@ -25,10 +25,18 @@ class Util {
   bool ShowValidXY(int x, int y);
   void ToggleStone(int x, int y);
 
+  int x();
+  int y();
+  int flag();
+  int isfinished();
+  AllPlayer* allplayers();
+  vector< pair<int, int> > placevalid();
+  Board* board();
+
  private:
   int x_, y_, flag_, is_finished_;
   AllPlayer* players_;
-  vector<pair<int, int>> place_valid_;
+  vector< pair<int, int> > place_valid_;
   Board* board_;
 };
 

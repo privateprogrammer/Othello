@@ -1,15 +1,14 @@
 # TODO: Set your googletest directory path
-GTEST_DIR=(Own your own)
-
+GTEST_DIR= /Users/nicholaskim/Desktop/School/21-Fall/21_Fall_School/OOD/2021_OOD/Othello/googletest/googletest
 CPPFLAGS += -isystem $(GTEST_DIR)/include
-
 CXXFLAGS += -pthread
-
+#add if your OS is mac OS
+CXXFLAGS += --std=c++17
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h
 
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
-
+TESTOBJECTS = gtest_main.a Board.o Info.o Player.o AllPlayer.o Util.o GameTest.o
 # TODO: Set your executable target
 all : main
 
@@ -56,11 +55,11 @@ main : main.cpp Board.o Info.o Player.o AllPlayer.o Util.o
 	g++ -std=c++17 -o $@ $^
 
 # TODO: Change 'calc_test.cc' to your test file
-CarTest.o : CarTest.cpp $(GTEST_HEADERS)
-	g++ $(CPPFLAGS) $(CXXFLAGS) --std=c++17 -c CarTest.cc -o $@
+GameTest.o : GameTest.cpp $(GTEST_HEADERS)
+	g++ $(CPPFLAGS) $(CXXFLAGS) --std=c++17 -c GameTest.cpp -o $@
 
 # TODO: Change 'calc_test.o' and 'calc.o' to your object targets
-test : CarTest.o Part.o Roof.o Wheel.o Door.o Car.o CarBuilder.o CarPartsFactory.o HyundaiPartsFactory.o KiaPartsFactory.o gtest_main.a
+test : $(TESTOBJECTS)
 	g++ $(CPPFLAGS) $(CXXFLAGS) --std=c++17 $^ -o $@
 
 .PHONY: all clean 
