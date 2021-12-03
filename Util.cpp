@@ -36,12 +36,23 @@ void Util::Init() {
   string flag_0 = "○";
   string flag_1 = "●";
   string use = "";
-
+  /*
+  start - 시작하는 변수 값을 y로 설정
+  flag_0, flag_1 각각 돌 색깔 설정
+  use 실제로 사용하는 돌의 모양
+  */
   while (true) {
     this -> flag_ = 0;
     this -> x_ = 0;
     this -> y_ = 0;
     this -> is_finished_ = 0;
+    /*
+    멤버 필드 초기화
+    flag_ = 0 을 통해 첫 시작 0번으로 지정
+    x_, y_는 좌표 0, 0으로 초기화
+    is_finished를 0으로 초기화하여 턴 체크
+    */
+
     if ((start.compare("N") == 0) || (start.compare("n") == 0)) {
       cout << "게임을 종료 합니다." << endl;
       break;
@@ -66,19 +77,22 @@ void Util::Init() {
     // 게임 진행은 끝나는 조건을 만날 때 까지 진행.
     // 플레이어의 색깔은 flag_로 판별.
     while (true) {
+      // 턴이 변경되면 clear를 통해 지우기
       system("clear");
-
       // 플레이어의 돌을 표현하기 위한 비교.
       if (this -> flag_ == 0)
         use = flag_0;
       else
         use = flag_1;
 
+      // 모든 사람 점수 출력
       this -> players_ -> GetInfo();
 
+      // 게임 끝나는 조건 확인
       if (!(this -> CheckCondition()))
         break;
 
+      // 본인이 둘 자리가 있는지 확인
       if (this -> place_valid_.size() == 0) {
         string temp;
         this -> PrintBoard();
@@ -103,9 +117,12 @@ void Util::Init() {
         cout << "옳은 선택이 아닙니다." << endl;
       }
 
+      // ToggleStone함수로 판을 뒤집는다
       this -> ToggleStone(this -> x_, this -> y_);
       fout << this -> x_<< " " << this -> y_ << endl;
+      //* 표시 된 공간을 다시 빈 공간으로 초기화
       this -> board_ -> ReturnBoard();
+
 
       // 점수 출력.
       this -> UpdateScore();
@@ -256,8 +273,6 @@ bool Util::CheckCondition() {
         this -> place_valid_.push_back(make_pair(x, y));
       }
   cout << endl;
-  // 놓을 수 있는 공간 없으면 + 업데이트.
-  // 놓을 수 있으면 다시 0으로 초기화.
 
   cout << "놓을 수 있는 경우의 수" << endl;
   for (int i = 0; i < this -> place_valid_.size(); i++) {
@@ -265,6 +280,9 @@ bool Util::CheckCondition() {
     << this -> place_valid_[i].second << "\t";
   }
   cout << endl;
+
+// 놓을 수 있는 공간 없으면 + 업데이트.
+// 놓을 수 있으면 다시 0으로 초기화.
 
   if (this -> place_valid_.size() == 0)
     this -> is_finished_++;
@@ -352,6 +370,10 @@ bool Util::ShowValidXY(int x, int y) {
   for (int idx = 0; idx < 8; idx++) {
     // possible을 통해 마지막에 위치하는 곳이 자기의 상태와 동일한지 판단
     //
+    /*
+    cnt는 상대방 돌의 갯수
+    possible은 마지막에 체크한 돌로 포위가 가능한지 여부
+    */
     int temp_x = x;
     int temp_y = y;
     int cnt = 0;
@@ -474,4 +496,32 @@ void Util::ToggleStone(int x, int y) {
       }
     }
   }
+}
+
+
+int Util::x() {
+  return this -> x_;
+}
+
+int Util::y() {
+  return this -> y_;
+}
+
+int Util::flag() {
+  return this -> flag_;
+}
+
+int Util::isfinished() {
+  return this -> is_finished_;
+}
+
+AllPlayer* Util::allplayers() {
+  return this -> players_;
+}
+vector< pair<int, int> > Util::placevalid() {
+  return this -> place_valid_;
+}
+
+Board* Util::board() {
+  return this -> board_;
 }
