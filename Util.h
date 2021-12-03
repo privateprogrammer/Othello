@@ -4,11 +4,13 @@
 #include <vector>
 #include <string>
 #include <utility>
+#include <fstream>
 #include "AllPlayer.h"
 #include "Board.h"
 
 using std::string;
 using std::pair;
+using std::ofstream;
 
 class Util {
  public:
@@ -24,6 +26,7 @@ class Util {
   void PrintBoard();
   bool ShowValidXY(int x, int y);
   void ToggleStone(int x, int y);
+  ofstream* log();
 
   int x();
   int y();
@@ -38,6 +41,7 @@ class Util {
   AllPlayer* players_;
   vector< pair<int, int> > place_valid_;
   Board* board_;
+  static ofstream fout;
 };
 
 #endif  // _UTIL_H_
