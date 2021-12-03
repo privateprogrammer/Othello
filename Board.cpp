@@ -3,6 +3,7 @@
 #include <iostream>
 
 using std::vector;
+using std::cout;
 using std::endl;
 
 Board::Board() {}
@@ -52,38 +53,38 @@ void Board::ShowBoard() {
   int length = Board::GetBoard().size() + 1;
 
   // 첫 행, 열을 숫자로 표시
-  this -> fout << endl;
+  cout << endl;
   for (int i = 0; i < length; i++) {
     for (int j = 0; j < length; j++) {
       if (i == 0) {
         if (j != 0)
-          this -> fout << j - 1 << " ";
+          cout << j - 1 << " ";
         else
-          this -> fout << " " << " ";
+          cout << " " << " ";
         continue;
       }
 
       if (j == 0) {
         if (i != 0)
-          this -> fout << i - 1 << " ";
+          cout << i - 1 << " ";
 
         continue;
       }
 
       if (Board::GetBoard()[i - 1][j - 1] == 0) {
-        this -> fout << "." << " ";
+        cout << "." << " ";
       } else if (Board::GetBoard()[i - 1][j - 1] == 1) {
-        this -> fout << "○" << " ";
+        cout << "○" << " ";
       } else if (Board::GetBoard()[i - 1][j - 1] == 2) {
-        this -> fout << "●" << " ";
+        cout << "●" << " ";
       } else {
-        this -> fout << "*" << " ";
+        cout << "*" << " ";
       }
     }
-    this -> fout << endl;
+    cout << endl;
   }
 
-  this -> fout << endl;
+  cout << endl;
 }
 
 bool Board::IsBoardFull() {
