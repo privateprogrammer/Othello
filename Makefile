@@ -1,5 +1,5 @@
 # TODO: Set your googletest directory path
-GTEST_DIR= /Users/nicholaskim/Desktop/School/21-Fall/21_Fall_School/OOD/2021_OOD/Othello/googletest/googletest
+GTEST_DIR= ./googletest/googletest
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 CXXFLAGS += -pthread
 #add if your OS is mac OS
