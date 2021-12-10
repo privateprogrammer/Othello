@@ -171,7 +171,7 @@ TEST(TEST, UtilUpdateScoreTEST) {
   EXPECT_EQ(util.allplayers()->GetScore(0), 4);
 }
 
-TEST(TEST, TogglePlayerTEST) {
+TEST(TEST, UtilTogglePlayerTEST) {
   Board* board_ = Board::GetInstance();
   board_ -> MakeBoard(4);
   Util util;

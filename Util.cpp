@@ -56,7 +56,7 @@ void Util::Init() {
     if ((start.compare("N") == 0) || (start.compare("n") == 0)) {
       cout << "게임을 종료 합니다." << endl;
       break;
-    }else {
+    } else {
       // 재시작 할 경우 선수들 점수 다시 0으로 초기화
       this -> players_ -> SetScore(0, 0);
       this -> players_ -> SetScore(1, 0);
