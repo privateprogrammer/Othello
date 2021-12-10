@@ -20,7 +20,6 @@ class Util {
   void MakeBoard();
   bool InputXY();
   bool CheckCondition();
-
   void UpdateScore();
   void TogglePlayer();
   void PrintBoard();
@@ -37,7 +36,10 @@ class Util {
   Board* board();
 
  private:
-  int x_, y_, flag_, is_finished_;
+  int x_;
+  int y_;
+  int flag_;
+  int is_finished_;
   AllPlayer* players_;
   vector< pair<int, int> > place_valid_;
   Board* board_;
