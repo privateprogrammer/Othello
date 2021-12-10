@@ -1,5 +1,5 @@
-#ifndef _ALLPLAYER_H_
-#define _ALLPLAYER_H_
+#ifndef ALLPLAYER_H_
+#define ALLPLAYER_H_
 
 #include <string>
 #include <vector>
@@ -34,4 +34,4 @@ class AllPlayer : public Info {
   // 두 명의 플레이어를 저장하는 벡터
 };
 
-#endif  // _ALLPLAYER_H_
+#endif  // ALLPLAYER_H_

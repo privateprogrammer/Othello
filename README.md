@@ -1,5 +1,3 @@
-
-    
 # Othello
 
 This project is made with C++ 17 in Object-Oriented Desing Class Team Project.
@@ -7,8 +5,6 @@ This project is made with C++ 17 in Object-Oriented Desing Class Team Project.
 Due ~ 2021.12.14
 
 <div align=center>
-    
-
 
 ## Team: TeamName
 
@@ -19,8 +15,6 @@ Due ~ 2021.12.14
 | Bhung Hwi Park <br /> <img src="https://avatars.githubusercontent.com/BHwi" width="100" />     | Republic of Korea | [Github](https://github.com/BHwi)       |
 
 ---
-
-
 
 | <b>목차 </b>                 |
 | ---------------------------- |
@@ -34,6 +28,10 @@ Due ~ 2021.12.14
 | <b>- 1-6. GameTest </b>      |
 | <b>2. 안전성 </b>            |
 | <b>3. 실행 시나리오 </b>     |
+
+# 데모 영상
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-ghR2yTE2Qs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
 

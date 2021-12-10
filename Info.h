@@ -1,5 +1,5 @@
-#ifndef _INFO_H_
-#define _INFO_H_
+#ifndef INFO_H_
+#define INFO_H_
 
 #include <string>
 
@@ -16,4 +16,4 @@ class Info {
   string name_;
 };
 
-#endif  // _INFO_H_
+#endif  // INFO_H_

@@ -1,5 +1,5 @@
-#ifndef _BOARD_H_
-#define _BOARD_H_
+#ifndef BOARD_H_
+#define BOARD_H_
 
 #include <vector>
 
@@ -26,4 +26,4 @@ class Board {
   vector< vector<int> > board_;  // board 2차원 vector
 };
 
-#endif  //  _BOARD_H_
+#endif  //  BOARD_H_

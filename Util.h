@@ -1,5 +1,5 @@
-#ifndef _UTIL_H_
-#define _UTIL_H_
+#ifndef UTIL_H_
+#define UTIL_H_
 
 #include <vector>
 #include <string>
@@ -46,4 +46,4 @@ class Util {
   static ofstream fout;
 };
 
-#endif  // _UTIL_H_
+#endif  // UTIL_H_

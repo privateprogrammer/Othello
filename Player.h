@@ -1,5 +1,5 @@
-#ifndef _PLAYER_H_
-#define _PLAYER_H_
+#ifndef PLAYER_H_
+#define PLAYER_H_
 
 #include <string>
 
@@ -19,4 +19,4 @@ class Player : public Info {
   int score_;  // 플레이어 점수를 저장하는 변수
 };
 
-#endif  // _PLAYER_H_
+#endif  // PLAYER_H_
