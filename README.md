@@ -42,7 +42,7 @@ Due ~ 2021.12.14
 
 # 0. Coding Convention
 
-<img src="./img/codeconvetion.png">
+<img src="./img/cpplint.png">
 - cpplint를 적용하였습니다.
 
 # 1. 구성
