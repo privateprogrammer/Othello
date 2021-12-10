@@ -1,6 +1,11 @@
+# Othello
+
+This project is made with C++ 17 in Object-Oriented Desing Class Team Project.
+Due ~ 2021.12.14
+
 ## Team: TeamName
 
-| Name                                                                                           | Country           | Where to find us                        |
+| Name                                                                                           | Country           | GitHubLink                              |
 | ---------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------- |
 | Hyunsoo Kim <br /> <img src="https://avatars.githubusercontent.com/dblepart99" width="100" />  | Republic of Korea | [Github](https://github.com/dblepart99) |
 | Shin Hyung Jang <br /> <img src="https://avatars.githubusercontent.com/LONGNEW" width="100" /> | Republic of Korea | [Github](https://github.com/LONGNEW)    |
@@ -8,30 +13,22 @@
 
 ---
 
----
+<div align=center>
 
-# Home
+| <b>목차 </b>                 |
+| ---------------------------- |
+| <b>0. 클래스 다이어그램 </b> |
+| <b>1. 구성 </b>              |
+| <b>- 1-1. Board </b>         |
+| <b>- 1-2. Util </b>          |
+| <b>- 1-3. Info </b>          |
+| <b>- 1-4. Player </b>        |
+| <b>- 1-5. AllPlayer </b>     |
+| <b>- 1-6. GameTest </b>      |
+| <b>2. 안전성 </b>            |
+| <b>3. 실행 시나리오 </b>     |
 
-## 0. 클래스 다이어그램
-
-## 1. 구성
-
-- 1-1. Board
-- 1-2. Util
-- 1-3. Info
-- 1-4. Player
-- 1-5. AllPlayer
-- 1-6. GameTest
-
-## 2. 예외 처리
-
-## 3. 실행 시나리오
-
-## 4. 게임이 끝나는 경우
-
----
-
----
+</div>
 
 # 0. 클래스 다이어그램
 
@@ -211,21 +208,21 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 11. ReturnBoardTEST : Board객체의 ReturnBoard() 함수 확인.
 12. IsBoardFullFalseTEST : Board객체의 IsBoardFull() 함수 확인.
 13. IsBoardFullTrueTEST : Board객체의 IsBoardFull() 함수 확인.
-14. IsBoardOneColorTrueTEST : Board객체의 IsBoardOneColor함수 확인.
-15. IsBoardOneColorFalseTEST : Board객체의 IsBoardOneColor함수 확인.
-16. BoardCheckMyScoreTEST : Board객체의 CheckMyScore 함수 확인.
-17. UtilShowValidTEST1 : Util객체의 ShowValidXY 함수 확인.
-18. UtilShowValidTEST2 : Util객체의 ShowValidXY 함수 확인.
-19. UtilToggleStoneTEST2 : Util객체의 ToggleStone함수 확인.
-20. UtilUpdateScoreTEST : Util객체의 UpdateScore 함수 확인.
-21. TogglePlayerTEST : Util객체의 TogglePlayer()함수 확인.
+14. IsBoardOneColorTrueTEST : Board객체의 IsBoardOneColor() 함수 확인.
+15. IsBoardOneColorFalseTEST : Board객체의 IsBoardOneColor() 함수 확인.
+16. BoardCheckMyScoreTEST : Board객체의 CheckMyScore() 함수 확인.
+17. UtilShowValidTEST1 : Util객체의 ShowValidXY() 함수 확인.
+18. UtilShowValidTEST2 : Util객체의 ShowValidXY() 함수 확인.
+19. UtilToggleStoneTEST2 : Util객체의 ToggleStone()함수 확인.
+20. UtilUpdateScoreTEST : Util객체의 UpdateScore() 함수 확인.
+21. TogglePlayerTEST : Util객체의 TogglePlayer() 함수 확인.
 ```
 
 ---
 
 <br>
 
-# 2. 예외 처리
+# 2. 안전성
 
 ### 1. board size에 대한 예외처리
 
@@ -234,6 +231,8 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
     1) board size가 4 이하일 경우 게임 진행 불가
     2) 홀수인 경우 시작 시 4개의 돌을 중앙에 놓을 수 없음
     3) 보드의 크기가 클수록 게임 진행에 문제가 발생
+
+  <img src="./img/boardsize.png">
 
 #### 해결
 
@@ -264,7 +263,8 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 #### 해결
 
-    1) AllPlayer의 소멸자에서 Player객체를 delete. 2) 게임이 종료될 때(Init 종료) AllPlayer객체를 delete.
+    1) AllPlayer의 소멸자에서 Player객체를 delete.
+    2) 게임이 종료될 때(Init 종료) AllPlayer객체를 delete.
 
 ---
 
@@ -311,22 +311,21 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 - 누가 이겼는지 출력
 - 게임을 더 할 것인지 물어봄
 
-true -> 1.로 돌아가 게임 시작
-false -> 프로그램 종료
+  true -> 1.로 돌아가 게임 시작
+  false -> 프로그램 종료
 
-## 4. 게임이 끝나는 경우
+#### 4. 게임이 끝나는 경우
 
 [오델로 규칙](https://ko.wikipedia.org/wiki/%EC%98%A4%EB%8D%B8%EB%A1%9C)에 따르면 오델로가 끝나는 경우의 수는 총 세가지이다.
 
 - 64개의 돌 모두가 판에 가득 찬 경우 (가장 일반적)
 
-<img src="./img/end1_full.png">
+  <img src="./img/end1_full.png">
 
 - 어느 한 쪽이 돌을 모두 뒤집은 경우
 
-<img src="./img/end2_one_Color.png">
+  <img src="./img/end2_one_Color.png">
 
 - 한 차례에 양 쪽 모두 서로 차례를 넘겨야 하는 경우
 
-<img src="./img/end3.png">
-```
+  <img src="./img/end3.png">
