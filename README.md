@@ -3,82 +3,77 @@
 <img src="./UML.png">
 <br><br>
 
-# 기능구현
-
-## Board
+# A. 구성
 
 ---
+
+## 1. Board (Board.cpp 게임 판을 관리하는 객체)
 
 ### Design pattern
 
 - Singleton pattern
-
----
+- 게임 판은 하나이기 때문에 관리는 오로지 생성된 유일한 객체로 관리되게 함이다.
 
 ### Function
 
 ```C++
 Board() : 기본 생성자
-static Board* GetInstance() : Singleton
+static Board* GetInstance() : Singleton 객체 반환
 vector< vector<int> > GetBoard() : getter for board_
-void ShowBoard() : 판을 보여줌
 void MakeBoard(int size) : size에 맞게 판을 만듦.
 void SetBoard(int flag, int x, int y) : flag는 현재 플레이어가 누군지, x, y좌표에 돌 놓기
 void ReturnBoard() : 업데이트 된 Board의 상태를 원상복구
-void UpdateBoard() : 플레이어가 돌을 두면 판을 바꿈
+void ShowBoard() : 게임 판을 출력해줌
 bool IsBoardFull() : board_가 가득 찼는지 확인
 bool IsBoardOneColor() : board_가 하나의 돌로 이루어졌는지 확인
 int CheckMyScore(int flag) : flag_에 따라 보드에 flag + 1의 상태가 몇 개나 있는지 확인
 ```
 
----
-
 ### member field
 
+#### private
+
 ```C++
-static Board* instance_
-vector< vector<int> > board_
+static Board* instance_ : 싱글톤 객체
+vector< vector<int> > board_ : board 2차원 vector
 ```
 
-<br><br>
-
-## Util
-
 ---
+
+## 2. Util (Util.cpp 게임의 전체적인 관리를 함.)
 
 ### Design pattern
 
 - Singleton pattern
-
----
+- 게임 관리자는 유일 객체를 통해서 하기 위함.
 
 ### Function
 
 ```C++
+Util() : 기본 생성자, 돌을 둘 자리, 완료 여부, 플레이어, board를 초기 설정.
 void InIt() : 모든 게임의 진행과정을 맡을 함수(main 이라 볼 수 있음)
 void SetName() : 플레이어 두명의 이름 입력받는 함수
 void MakeBoard() : Board 칸 입력받고, Board만드는 함수
 bool InputXY() : 돌을 놓고 싶은 좌표 입력 받는 함수
 bool CheckCondition() : 게임 진행 가능한지 확인하는 함수.
-
 void UpdateScore() : 한 플레이어가 돌을 놓은 이후 모두의 점수를 업데이트 하는 함수
 void TogglePlayer() : now_player_ 바꿔주기
 void PrintBoard() : board 출력
 bool ShowValidXY(int x, int y) : 둘 수 있는 돌의 좌표 알려주기, valid_ 횟수 세기
 void ToggleStone(int x, int y) : 돌 뒤집기
-
-int x();
-int y();
-int flag();
-int isfinished();
-AllPlayer* allplayers();
-vector< pair<int, int> > placevalid();
-Board* board();
+ofstream* log() : 입력받은 값들을 메모장으로 남기기 위함.
+int x() : getter for x_
+int y() : getter for y_
+int flag() : getter for flag_
+int isfinished() : getter for is_finishied_
+AllPlayer* allplayers() : getter for players_
+vector< pair<int, int> > placevalid() : getter for place_valid_
+Board* board() : getter for board_
 ```
 
 ### member field
 
----
+#### private
 
 ```C++
 int x_, int y_ : 현재 입력 받은 돌 좌표
@@ -87,13 +82,16 @@ int is_finished_ : ShowValidXY 갯수 세기
 AllPlayer players_ : AllPlayer 객체
 vector<pair<int, int>> place_valid_ : 놓을 수 있는 공간들의 벡터
 Board* board_ : 보드 객체를 가지고 있음.
+static ofstream fout : 메모장에 남기기 위함.
 ```
 
-<br><br>
-
-## Info (abstract class)
-
 ---
+
+## 3. Info (Info.cpp abstract class 추상 클래스)
+
+### Feature
+
+- abstract class
 
 ### Function
 
@@ -104,19 +102,17 @@ string GetName() : 현재 객체의 이름을 가져감
 virtual void GetInfo() = 0 : 각 플레이어의 정보 즉, 객체의 정보를 출력함.
 ```
 
----
-
 ### member field
+
+#### private
 
 ```C++
 string name_ : 플레이어 이름 변수
 ```
 
-<br>
-
-## Player : [Inherit Info class]
-
 ---
+
+## 4. Player : (Player.cpp Inherit Info class를 상속하는 클래스)
 
 ### Function
 
@@ -128,19 +124,17 @@ void GetInfo() override : 객체의 정보를 출력
 ~Player() : 소멸자
 ```
 
----
-
 ### member field
+
+#### private
 
 ```C++
 int score_ : 플레이어 점수를 저장하는 변수
 ```
 
-<br>
-
-## AllPlayer : [Inherit Info class]
-
 ---
+
+## 5. AllPlayer : (Player.cpp, Info class를 상속하는 클래스)
 
 ### Function
 
@@ -156,17 +150,45 @@ void Winner() : 게임이 종료되고 두 플레이어 중 승자를 출력함
 
 ```
 
----
-
 ### member field
+
+#### private
 
 ```C++
 vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 ```
 
+---
+
+## 6. GameTest (GameTest.cpp gtest모듈을 활용한 test파일)
+
+1. PlayerGetScoreTEST : Player 객체의 GetScore() 함수 확인.
+2. PlayerSetScoreTEST : Player 객체의 SetScore() 함수 확인.
+3. PlayerSetNameTEST : Player 객체의 SetName() 함수 확인.
+4. PlayerGetNameTEST : Player 객체의 GetName() 함수 확인.
+5. AllPlayerGetNameTEST : AllPlayer 객체의 GetPlayerName() 함수 확인.
+6. AllPlayerSetNameTEST : AllPlayer 객체의 SetPlayerName() 함수 확인.
+7. AllPlayerGetScoreTEST : AllPlayer 객체의 GetScore() 함수 확인.
+8. AllPlayerSetScoreTEST : AllPlayer 객체의 SetScore() 함수 확인.
+9. BoardTEST : Board객체의 MakeBoard() 함수 확인.
+10. SetBoardTEST : Board객체의 SetBoard() 함수 확인.
+11. ReturnBoardTEST : Board객체의 ReturnBoard() 함수 확인.
+12. IsBoardFullFalseTEST : Board객체의 IsBoardFull() 함수 확인.
+13. IsBoardFullTrueTEST : Board객체의 IsBoardFull() 함수 확인.
+14. IsBoardOneColorTrueTEST : Board객체의 IsBoardOneColor함수 확인.
+15. IsBoardOneColorFalseTEST : Board객체의 IsBoardOneColor함수 확인.
+16. BoardCheckMyScoreTEST : Board객체의 CheckMyScore 함수 확인.
+17. UtilShowValidTEST1 : Util객체의 ShowValidXY 함수 확인.
+18. UtilShowValidTEST2 : Util객체의 ShowValidXY 함수 확인.
+19. UtilToggleStoneTEST2 : Util객체의 ToggleStone함수 확인.
+20. UtilUpdateScoreTEST : Util객체의 UpdateScore 함수 확인.
+21. TogglePlayerTEST : Util객체의 TogglePlayer()함수 확인.
+
+---
+
 <br>
 
-# 예외처리
+# B. 예외처리
 
 ```
 1. board size에 대한 예외처리
@@ -211,7 +233,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 <br><br>
 
-# 실행 시나리오
+# C. 실행 시나리오
 
 ```
 1. 게임 시작
