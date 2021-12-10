@@ -1,7 +1,14 @@
+
+    
 # Othello
 
 This project is made with C++ 17 in Object-Oriented Desing Class Team Project.
+
 Due ~ 2021.12.14
+
+<div align=center>
+    
+
 
 ## Team: TeamName
 
@@ -13,7 +20,7 @@ Due ~ 2021.12.14
 
 ---
 
-<div align=center>
+
 
 | <b>목차 </b>                 |
 | ---------------------------- |
