@@ -6,26 +6,40 @@
 | Shin Hyung Jang <br /> <img src="https://avatars.githubusercontent.com/LONGNEW" width="100" /> | Republic of Korea | [Github](https://github.com/LONGNEW)    |
 | Bhung Hwi Park <br /> <img src="https://avatars.githubusercontent.com/BHwi" width="100" />     | Republic of Korea | [Github](https://github.com/BHwi)       |
 
+---
+
+---
+
 # 목차
 
-## <a href="# 0. 클래스 다이어그램">0. 클래스 다이어그램</a>
+## <b><a href="# 0. 클래스 다이어그램">0. 클래스 다이어그램</a></b>
 
 ## <b><a href="# 1. 구성">1. 구성</a></b>
 
-- <a href="## 1-1. Board (Board.cpp 게임 판을 관리하는 객체)">1-1. Board</a>
--
-- C.
-- D.
-- E.
+- <b><a href="## 1-1. [Board](./Board.cpp) (게임 판을 관리하는 객체)">1-1. Board</a></b>
+- <b><a href="## 1-2. [Util](./Util.cpp) (게임의 전체적인 관리를 함.)">1-2. Util</a></b>
+- <b><a href="## 1-3. [Info](./Info.cpp) (abstract class 추상 클래스)">1-3. Info</a></b>
+- <b><a href="## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)">1-4. Player</a></b>
+- <b><a href="## 1-5. [AllPlayer](./AllPlayer.cpp) ([Info](./Info.cpp)를 상속하는 클래스)">1-5. AllPlayer</a></b>
+- <b><a href="## 1-6. [GameTest](./GameTest.cpp) (gtest모듈을 활용한 test파일)">1-6. GameTest</a></b>
 
-## 2. 예외 처리
+## <b><a href="# 2. 예외 처리">2. 예외 처리</a></b>
 
-## 3. 실행 시나리오
+## <b><a href="# 3. 실행 시나리오">3. 실행 시나리오</a></b>
+
+## <b><a href="# 4. 데모 영상">4. 데모 영상</a></b>
+
+---
+
+---
 
 # 0. 클래스 다이어그램
 
 <img src="./UML.png">
 <br><br>
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
 
 # 1. 구성
 
@@ -61,6 +75,10 @@ int CheckMyScore(int flag) : flag_에 따라 보드에 flag + 1의 상태가 몇
 static Board* instance_ : 싱글톤 객체
 vector< vector<int> > board_ : board 2차원 vector
 ```
+
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
 
 ---
 
@@ -109,6 +127,10 @@ Board* board_ : 보드 객체를 가지고 있음.
 static ofstream fout : 메모장에 남기기 위함.
 ```
 
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
+
 ---
 
 ## 1-3. [Info](./Info.cpp) (abstract class 추상 클래스)
@@ -134,6 +156,10 @@ virtual void GetInfo() = 0 : 각 플레이어의 정보 즉, 객체의 정보를
 string name_ : 플레이어 이름 변수
 ```
 
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
+
 ---
 
 ## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
@@ -155,6 +181,10 @@ void GetInfo() override : 객체의 정보를 출력
 ```C++
 int score_ : 플레이어 점수를 저장하는 변수
 ```
+
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
 
 ---
 
@@ -182,10 +212,15 @@ void Winner() : 게임이 종료되고 두 플레이어 중 승자를 출력함
 vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 ```
 
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
+
 ---
 
 ## 1-6. [GameTest](./GameTest.cpp) (gtest모듈을 활용한 test파일)
 
+```C++
 1. PlayerGetScoreTEST : Player 객체의 GetScore() 함수 확인.
 2. PlayerSetScoreTEST : Player 객체의 SetScore() 함수 확인.
 3. PlayerSetNameTEST : Player 객체의 SetName() 함수 확인.
@@ -207,6 +242,11 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 19. UtilToggleStoneTEST2 : Util객체의 ToggleStone함수 확인.
 20. UtilUpdateScoreTEST : Util객체의 UpdateScore 함수 확인.
 21. TogglePlayerTEST : Util객체의 TogglePlayer()함수 확인.
+```
+
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
 
 ---
 
@@ -255,7 +295,11 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 ```
 
-<br><br>
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
+
+---
 
 # 3. 실행 시나리오
 
@@ -300,3 +344,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
   false -> 프로그램 종료
 
 ```
+
+<div align="right">
+    <b><a href="# 목차">⬆️ Back to Top</a></b>
+</div>
