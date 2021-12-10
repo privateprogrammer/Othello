@@ -1,4 +1,4 @@
-## Team: 현수야 병휘는 신형이가 싫대
+## Team: TeamName
 
 | Name                                                                                           | Country           | Where to find us                        |
 | ---------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------- |
@@ -27,7 +27,7 @@
 
 ## 3. 실행 시나리오
 
-## 4. 데모 영상
+## 4. 게임이 끝나는 경우
 
 ---
 
@@ -35,11 +35,8 @@
 
 # 0. 클래스 다이어그램
 
-<img src="./UML.png">
+<img src="./img/UML.png">
 <br><br>
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
 
 # 1. 구성
 
@@ -75,10 +72,6 @@ int CheckMyScore(int flag) : flag_에 따라 보드에 flag + 1의 상태가 몇
 static Board* instance_ : 싱글톤 객체
 vector< vector<int> > board_ : board 2차원 vector
 ```
-
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
 
 ---
 
@@ -127,10 +120,6 @@ Board* board_ : 보드 객체를 가지고 있음.
 static ofstream fout : 메모장에 남기기 위함.
 ```
 
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
-
 ---
 
 ## 1-3. [Info](./Info.cpp) (abstract class 추상 클래스)
@@ -156,10 +145,6 @@ virtual void GetInfo() = 0 : 각 플레이어의 정보 즉, 객체의 정보를
 string name_ : 플레이어 이름 변수
 ```
 
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
-
 ---
 
 ## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
@@ -181,10 +166,6 @@ void GetInfo() override : 객체의 정보를 출력
 ```C++
 int score_ : 플레이어 점수를 저장하는 변수
 ```
-
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
 
 ---
 
@@ -211,12 +192,6 @@ void Winner() : 게임이 종료되고 두 플레이어 중 승자를 출력함
 ```C++
 vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 ```
-
-<div align="right">
-    <b><a href="#-home">⬆️ Back to Top</a></b>
-</div>
-
-[Back to Top](#-home)
 
 ---
 
@@ -246,111 +221,112 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 21. TogglePlayerTEST : Util객체의 TogglePlayer()함수 확인.
 ```
 
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
-
 ---
 
 <br>
 
 # 2. 예외 처리
 
-```
-1. board size에 대한 예외처리
+### 1. board size에 대한 예외처리
 
-  문제점
+#### 문제점
 
     1) board size가 4 이하일 경우 게임 진행 불가
     2) 홀수인 경우 시작 시 4개의 돌을 중앙에 놓을 수 없음
     3) 보드의 크기가 클수록 게임 진행에 문제가 발생
 
-  해결
+#### 해결
 
     1) 4이하의 입력에 대해 재입력 요구
     2) 짝수에 대한 입력을 요구
     3) 최대 크기는 20으로 제한
 
+### 2. 사용자 입력에 대한 예외처리
 
-2. 사용자 입력에 대한 예외처리
-
-  문제점
+#### 문제점
 
     1) int형 변수에 string 값이 저장될 경우 무한루프 발생
     2) 사용자가 돌을 놓지 못하는 곳에 돌을 둔 경우
 
-  해결
+  <img src="./img/novalidXY.png">
+
+#### 해결
 
     1) string 값으로 먼저 저장하여 입력값이 숫자인지 판단 후 저장
     2) 놓을 수 있는 곳(vector에 저장된 자표)으로 재입력 요구
 
-3. 메모리 누수에 대한 예외처리
+### 3. 메모리 누수에 대한 예외처리
 
-  문제점
+#### 문제점
 
     1) Player* p1, p2 객체와 같이 메모리 누수가 발생하는 변수 존재
     2) Util에서 할당된 객체는 AllPlayer만 존재
 
-  해결
-    1) AllPlayer의 소멸자에서 Player객체를 delete.
-    2) 게임이 종료될 때(Init 종료) AllPlayer객체를 delete.
+#### 해결
 
-```
-
-<div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
-</div>
-
-[목차](#-목차)
+    1) AllPlayer의 소멸자에서 Player객체를 delete. 2) 게임이 종료될 때(Init 종료) AllPlayer객체를 delete.
 
 ---
 
 # 3. 실행 시나리오
 
+#### 1. 게임 시작
+
+- 보드의 사이즈 입력
+- 플레이어 이름 입력
+
+- 1. 보드 제작
+- 2. 보드 초기 설정 하는 메소드
+
+#### 2. 플레이어 입력
+
+- 게임 진행 가능 판별
+  - 1. 모든 돌이 동일한 색인지.
+  - 2. 모든 공간이 채워졌는지
+  - 3. 아무것도 하지 않은 턴이 2전 되었는지.
+- 놓을 수 있는 공간 확인
+- 현재 보드 상황
+
+- 입력을 받음
+  true
+
+  - 1 놓으려는 좌표 입력
+  - 2 놓을 수 있는 공간인지 확인
+
+    true -> 공간에 돌을 둠
+    false -> 다시 2 - true. 1로 이동
+
+  false
+
+  - 턴이 넘어간 횟수가 2번인지 확인
+
+    true -> 게임 종료
+    false -> 턴이 넘어간 횟수 업데이트, 플레이어 순서 넘김
+
+- 돌을 뒤집은 후에 "3"으로 업데이트 되었던 값을 다시 0으로 보냄.
+
+#### 3. 게임 종료
+
+- 보드에 존재하는 돌의 개수 체크
+- 누가 이겼는지 출력
+- 게임을 더 할 것인지 물어봄
+
+true -> 1.로 돌아가 게임 시작
+false -> 프로그램 종료
+
+## 4. 게임이 끝나는 경우
+
+[오델로 규칙](https://ko.wikipedia.org/wiki/%EC%98%A4%EB%8D%B8%EB%A1%9C)에 따르면 오델로가 끝나는 경우의 수는 총 세가지이다.
+
+- 64개의 돌 모두가 판에 가득 찬 경우 (가장 일반적)
+
+<img src="./img/end1_full.png">
+
+- 어느 한 쪽이 돌을 모두 뒤집은 경우
+
+<img src="./img/end2_one_Color.png">
+
+- 한 차례에 양 쪽 모두 서로 차례를 넘겨야 하는 경우
+
+<img src="./img/end3.png">
 ```
-1. 게임 시작
-  - 보드의 사이즈 입력
-  - 플레이어 이름 입력
-
-  - 1. 보드 제작
-  - 2. 보드 초기 설정 하는 메소드
-
-2. 플레이어 입력
-  - 게임 진행 가능 판별
-    - 1. 모든 돌이 동일한 색인지.
-    - 2. 모든 공간이 채워졌는지
-    - 3. 아무것도 하지 않은 턴이 2전 되었는지.
-  - 놓을 수 있는 공간 확인
-  - 현재 보드 상황
-
-  - 입력을 받음
-    true
-      . 1 놓으려는 좌표 입력
-      . 2 놓을 수 있는 공간인지 확인
-
-        true -> 공간에 돌을 둠
-        false -> 다시 2 - true. 1로 이동
-
-    false
-      - 턴이 넘어간 횟수가 2번인지 확인
-
-      true -> 게임 종료
-      false -> 턴이 넘어간 횟수 업데이트, 플레이어 순서 넘김
-
-  - 돌을 뒤집은 후에 "3"으로 업데이트 되었던 값을 다시 0으로 보냄.
-
-3. 게임 종료
-  - 보드에 존재하는 돌의 개수 체크
-  - 누가 이겼는지 출력
-  - 게임을 더 할 것인지 물어봄
-
-  true -> 1.로 돌아가 게임 시작
-  false -> 프로그램 종료
-
-```
-
-<div align="right">
-    <b><a href="#-목차">⬆️ Back to Top</a></b>
-</div>
-
-## 4. 데모 영상

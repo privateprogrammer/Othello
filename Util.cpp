@@ -33,7 +33,7 @@ Util::Util() {
 void Util::Init() {
   // 선 플레이어 A로 가정.
   string start = "y";
-  string flag_0 = "○";
+  string flag_0 = "X";
   string flag_1 = "●";
   string use = "";
   /*
