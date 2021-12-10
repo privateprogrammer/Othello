@@ -1,13 +1,37 @@
-# 클래스 다이어그램
+## Team: 현수야 병휘는 신형이가 싫대
+
+| Name                                                                                           | Country           | Where to find us                        |
+| ---------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------- |
+| Hyunsoo Kim <br /> <img src="https://avatars.githubusercontent.com/dblepart99" width="100" />  | Republic of Korea | [Github](https://github.com/dblepart99) |
+| Shin Hyung Jang <br /> <img src="https://avatars.githubusercontent.com/LONGNEW" width="100" /> | Republic of Korea | [Github](https://github.com/LONGNEW)    |
+| Bhung Hwi Park <br /> <img src="https://avatars.githubusercontent.com/BHwi" width="100" />     | Republic of Korea | [Github](https://github.com/BHwi)       |
+
+# 목차
+
+## <a href="# 0. 클래스 다이어그램">0. 클래스 다이어그램</a>
+
+## <a href="# 1. 구성">1. 구성</a>
+
+- <a href="## 1-1. Board (Board.cpp 게임 판을 관리하는 객체)">1-1. Board</a>
+-
+- C.
+- D.
+- E.
+
+## 2. 예외 처리
+
+## 3. 실행 시나리오
+
+# 0. 클래스 다이어그램
 
 <img src="./UML.png">
 <br><br>
 
-# A. 구성
+# 1. 구성
 
 ---
 
-## 1. Board (Board.cpp 게임 판을 관리하는 객체)
+## 1-1. [Board](./Board.cpp) (게임 판을 관리하는 객체)
 
 ### Design pattern
 
@@ -40,7 +64,7 @@ vector< vector<int> > board_ : board 2차원 vector
 
 ---
 
-## 2. Util (Util.cpp 게임의 전체적인 관리를 함.)
+## 1-2. [Util](./Util.cpp) (게임의 전체적인 관리를 함.)
 
 ### Design pattern
 
@@ -87,7 +111,7 @@ static ofstream fout : 메모장에 남기기 위함.
 
 ---
 
-## 3. Info (Info.cpp abstract class 추상 클래스)
+## 1-3. [Info](./Info.cpp) (abstract class 추상 클래스)
 
 ### Feature
 
@@ -112,7 +136,7 @@ string name_ : 플레이어 이름 변수
 
 ---
 
-## 4. Player : (Player.cpp Inherit Info class를 상속하는 클래스)
+## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
 
 ### Function
 
@@ -134,7 +158,7 @@ int score_ : 플레이어 점수를 저장하는 변수
 
 ---
 
-## 5. AllPlayer : (Player.cpp, Info class를 상속하는 클래스)
+## 1-5. [AllPlayer](./AllPlayer.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
 
 ### Function
 
@@ -160,7 +184,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 ---
 
-## 6. GameTest (GameTest.cpp gtest모듈을 활용한 test파일)
+## 1-6. [GameTest](./GameTest.cpp) (gtest모듈을 활용한 test파일)
 
 1. PlayerGetScoreTEST : Player 객체의 GetScore() 함수 확인.
 2. PlayerSetScoreTEST : Player 객체의 SetScore() 함수 확인.
@@ -188,7 +212,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 <br>
 
-# B. 예외처리
+# 2. 예외 처리
 
 ```
 1. board size에 대한 예외처리
@@ -233,7 +257,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 
 <br><br>
 
-# C. 실행 시나리오
+# 3. 실행 시나리오
 
 ```
 1. 게임 시작
