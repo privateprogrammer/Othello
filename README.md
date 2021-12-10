@@ -19,6 +19,7 @@ Due ~ 2021.12.14
 | <b>목차 </b>                 |
 | ---------------------------- |
 | <b>0. 클래스 다이어그램 </b> |
+| <b>0. Coding Convention </b> |
 | <b>1. 구성 </b>              |
 | <b>- 1-1. Board </b>         |
 | <b>- 1-2. Util </b>          |
@@ -38,7 +39,11 @@ Due ~ 2021.12.14
 # 0. 클래스 다이어그램
 
 <img src="./img/UML.png">
-<br><br>
+
+# 0. Coding Convention
+
+<img src="./img/codeconvetion.png">
+- cpplint를 적용하였습니다.
 
 # 1. 구성
 
