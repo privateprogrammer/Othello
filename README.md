@@ -10,24 +10,24 @@
 
 ---
 
-# 목차
+# Home
 
-## <b><a href="# 0. 클래스 다이어그램">0. 클래스 다이어그램</a></b>
+## 0. 클래스 다이어그램
 
-## <b><a href="# 1. 구성">1. 구성</a></b>
+## 1. 구성
 
-- <b><a href="## 1-1. [Board](./Board.cpp) (게임 판을 관리하는 객체)">1-1. Board</a></b>
-- <b><a href="## 1-2. [Util](./Util.cpp) (게임의 전체적인 관리를 함.)">1-2. Util</a></b>
-- <b><a href="## 1-3. [Info](./Info.cpp) (abstract class 추상 클래스)">1-3. Info</a></b>
-- <b><a href="## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)">1-4. Player</a></b>
-- <b><a href="## 1-5. [AllPlayer](./AllPlayer.cpp) ([Info](./Info.cpp)를 상속하는 클래스)">1-5. AllPlayer</a></b>
-- <b><a href="## 1-6. [GameTest](./GameTest.cpp) (gtest모듈을 활용한 test파일)">1-6. GameTest</a></b>
+- 1-1. Board
+- 1-2. Util
+- 1-3. Info
+- 1-4. Player
+- 1-5. AllPlayer
+- 1-6. GameTest
 
-## <b><a href="# 2. 예외 처리">2. 예외 처리</a></b>
+## 2. 예외 처리
 
-## <b><a href="# 3. 실행 시나리오">3. 실행 시나리오</a></b>
+## 3. 실행 시나리오
 
-## <b><a href="# 4. 데모 영상">4. 데모 영상</a></b>
+## 4. 데모 영상
 
 ---
 
@@ -213,8 +213,10 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 ```
 
 <div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
+    <b><a href="#-home">⬆️ Back to Top</a></b>
 </div>
+
+[Back to Top](#-home)
 
 ---
 
@@ -299,6 +301,8 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
     <b><a href="# 목차">⬆️ Back to Top</a></b>
 </div>
 
+[목차](#-목차)
+
 ---
 
 # 3. 실행 시나리오
@@ -346,5 +350,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
 ```
 
 <div align="right">
-    <b><a href="# 목차">⬆️ Back to Top</a></b>
+    <b><a href="#-목차">⬆️ Back to Top</a></b>
 </div>
+
+## 4. 데모 영상
