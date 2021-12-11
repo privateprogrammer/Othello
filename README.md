@@ -1,3 +1,7 @@
+# 객체지향설계 00분반
+
+### 팀원: 201802081 김현수, 201802093 박병휘, 2018020151 장신형
+
 # Othello
 
 This project is made with C++ 17 in Object-Oriented Desing Class Team Project.
@@ -6,13 +10,19 @@ Due ~ 2021.12.14
 
 <div align=center>
 
-## Team: TeamName
+## Team info
 
 | Name                                                                                           | Country           | GitHubLink                              |
 | ---------------------------------------------------------------------------------------------- | :---------------- | --------------------------------------- |
 | Hyunsoo Kim <br /> <img src="https://avatars.githubusercontent.com/dblepart99" width="100" />  | Republic of Korea | [Github](https://github.com/dblepart99) |
 | Shin Hyung Jang <br /> <img src="https://avatars.githubusercontent.com/LONGNEW" width="100" /> | Republic of Korea | [Github](https://github.com/LONGNEW)    |
 | Bhung Hwi Park <br /> <img src="https://avatars.githubusercontent.com/BHwi" width="100" />     | Republic of Korea | [Github](https://github.com/BHwi)       |
+
+# 데모 영상
+
+[영상링크](https://youtu.be/-ghR2yTE2Qs)
+
+### https://youtu.be/-ghR2yTE2Qs
 
 ---
 
@@ -29,12 +39,6 @@ Due ~ 2021.12.14
 | <b>- 1-6. GameTest </b>      |
 | <b>2. 안전성 </b>            |
 | <b>3. 실행 시나리오 </b>     |
-
-# 데모 영상
-
-[영상링크](https://youtu.be/-ghR2yTE2Qs)
-
-### https://youtu.be/-ghR2yTE2Qs
 
 </div>
 
