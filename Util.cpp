@@ -351,12 +351,13 @@ bool Util::ShowValidXY(int x, int y) {
   int dy[8] = {-1, 1, 0, 0, -1, 1, -1, 1};
 
   // ret의 경우 가능한 경우가 존재함을 의미.
-  vector< vector<int> > add_board = board_ -> GetBoard();
-  int board_size = add_board.size();
+  // vector< vector<int> > add_board = board_ -> GetBoard();
+  // int board_size = add_board.size();
+  int board_size = board_ -> GetBoard().size();
   int ret = 0;
 
   // 현재 위치가 빈칸인지 부터 확인.
-  if (add_board[x][y] != 0) {
+  if (board_ -> GetBoard()[x][y] != 0) {
     return false;
   }
 
@@ -397,17 +398,17 @@ bool Util::ShowValidXY(int x, int y) {
         break;
 
       // 나와 동일한 상대를 만나는 경우 possible 업데이트
-      if (add_board[temp_x][temp_y] == my_status) {
+      if (board_ -> GetBoard()[temp_x][temp_y] == my_status) {
         possible = 1;
         break;
       }
 
       // 상대방의 돌이 있는 경우에만 cnt++;
       // 그 외의 경우에는 이 지점에 돌을 놓을 수 없음.
-      if (add_board[temp_x][temp_y] == oppent)
+      if (board_ -> GetBoard()[temp_x][temp_y] == oppent)
         cnt++;
       // 아직 자기 자신을 만나지 않았는데 빈칸인 경우
-      if (add_board[temp_x][temp_y] == 3 || add_board[temp_x][temp_y] == 0)
+      if (board_ -> GetBoard()[temp_x][temp_y] == 3 || board_ -> GetBoard()[temp_x][temp_y] == 0)
         break;
     }
 
@@ -429,8 +430,9 @@ void Util::ToggleStone(int x, int y) {
   int dy[8] = {-1, 1, 0, 0, -1, 1, -1, 1};
 
   // ret의 경우 가능한 경우가 존재함을 의미.
-  vector< vector<int> > add_board = board_ -> GetBoard();
-  int board_size = add_board.size();
+  // vector< vector<int> > add_board = board_ -> GetBoard();
+  // int board_size = add_board.size();
+  int board_size = board_ -> GetBoard().size();
 
   // 상대 돌의 상태를 초기화
   int oppent = 0;
@@ -465,14 +467,14 @@ void Util::ToggleStone(int x, int y) {
         )
         break;
 
-      if (add_board[temp_x][temp_y] == my_status) {
+      if (board_ -> GetBoard()[temp_x][temp_y] == my_status) {
         possible = 1;
         break;
       }
 
-      if (add_board[temp_x][temp_y] == oppent)
+      if (board_ -> GetBoard()[temp_x][temp_y] == oppent)
         cnt++;
-      if (add_board[temp_x][temp_y] == 0 || add_board[temp_x][temp_y] == 3)
+      if (board_ -> GetBoard()[temp_x][temp_y] == 0 || board_ -> GetBoard()[temp_x][temp_y] == 3)
         break;
     }
 
@@ -493,7 +495,7 @@ void Util::ToggleStone(int x, int y) {
           )
           break;
 
-        if (add_board[temp_x][temp_y] == my_status)
+        if (board_ -> GetBoard()[temp_x][temp_y] == my_status)
           break;
 
         board_ -> SetBoard(my_status - 1, temp_x, temp_y);
