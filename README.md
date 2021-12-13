@@ -452,6 +452,7 @@ string name_ : 플레이어 이름 변수
 ## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
 
 ### Design pattern
+
 - Inheritance
 
 ### Function
@@ -477,6 +478,7 @@ int score_ : 플레이어 점수를 저장하는 변수
 ## 1-5. [AllPlayer](./AllPlayer.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
 
 ### Design pattern
+
 - Inheritance
 
 ### Function
@@ -557,7 +559,7 @@ vector<Player*> players_ : 두 명의 플레이어를 저장하는 벡터
     1) int형 변수에 string 값이 저장될 경우 무한루프 발생
     2) 사용자가 돌을 놓지 못하는 곳에 돌을 둔 경우
 
-  <img src="./img/novalidXY.png">
+  <img src="./img/wrongXY.png">
 
 #### 해결
 
