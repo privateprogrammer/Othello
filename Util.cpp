@@ -408,7 +408,8 @@ bool Util::ShowValidXY(int x, int y) {
       if (board_ -> GetBoard()[temp_x][temp_y] == oppent)
         cnt++;
       // 아직 자기 자신을 만나지 않았는데 빈칸인 경우
-      if (board_ -> GetBoard()[temp_x][temp_y] == 3 || board_ -> GetBoard()[temp_x][temp_y] == 0)
+      if (board_ -> GetBoard()[temp_x][temp_y] == 3 ||
+      board_ -> GetBoard()[temp_x][temp_y] == 0)
         break;
     }
 
@@ -474,7 +475,8 @@ void Util::ToggleStone(int x, int y) {
 
       if (board_ -> GetBoard()[temp_x][temp_y] == oppent)
         cnt++;
-      if (board_ -> GetBoard()[temp_x][temp_y] == 0 || board_ -> GetBoard()[temp_x][temp_y] == 3)
+      if (board_ -> GetBoard()[temp_x][temp_y] == 0 ||
+      board_ -> GetBoard()[temp_x][temp_y] == 3)
         break;
     }
 
