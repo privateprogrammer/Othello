@@ -453,7 +453,7 @@ string name_ : 플레이어 이름 변수
 
 ### Design pattern
 
-- class hierachy
+- class hierachy(inheritance)
 
 ### Function
 
@@ -479,7 +479,7 @@ int score_ : 플레이어 점수를 저장하는 변수
 
 ### Design pattern
 
-- class hierachy
+- class hierachy(inheritance)
 
 ### Function
 
