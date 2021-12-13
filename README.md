@@ -91,11 +91,6 @@ vector< vector<int> > board_ : board 2차원 vector
 
 ## 1-2. [Util](./Util.cpp) (게임의 전체적인 관리를 함.)
 
-### Design pattern
-
-- Singleton pattern
-- 게임 관리자는 유일 객체를 통해서 하기 위함.
-
 ### Function
 
 ```C++
@@ -456,6 +451,9 @@ string name_ : 플레이어 이름 변수
 
 ## 1-4. [Player](./Player.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
 
+### Design pattern
+- Inheritance
+
 ### Function
 
 ```C++
@@ -477,6 +475,9 @@ int score_ : 플레이어 점수를 저장하는 변수
 ---
 
 ## 1-5. [AllPlayer](./AllPlayer.cpp) ([Info](./Info.cpp)를 상속하는 클래스)
+
+### Design pattern
+- Inheritance
 
 ### Function
 
