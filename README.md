@@ -44,7 +44,7 @@ Due ~ 2021.12.14
 
 # 0. 클래스 다이어그램
 
-<img src="./img/uml.png">
+<img src="./img/UML.png">
 
 # 0. Coding Convention
 
