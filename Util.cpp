@@ -227,7 +227,7 @@ bool Util::InputXY() {
 bool Util::CheckCondition() {
   vector< vector<int> > add_board = board_ -> GetBoard();
   int board_size = add_board.size();
-  string flag_0 = "○";
+  string flag_0 = "X";
   string flag_1 = "●";
   string use = "";
 
