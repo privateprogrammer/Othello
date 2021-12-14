@@ -56,11 +56,8 @@ void Util::Init() {
     if ((start.compare("N") == 0) || (start.compare("n") == 0)) {
       cout << "게임을 종료 합니다." << endl;
       break;
-    } else {
-      // 재시작 할 경우 선수들 점수 다시 0으로 초기화
-      this -> players_ -> SetScore(0, 0);
-      this -> players_ -> SetScore(1, 0);
     }
+
     // 게임 내의 상황을 기록 하는 로그 txt파일을 염.
     ofstream fout;
     fout.open("z_log.txt");
@@ -89,7 +86,8 @@ void Util::Init() {
       else
         use = flag_1;
 
-      // 모든 사람 점수 출력
+      // 모든 사람 점수 업데이트,  출력
+      this -> UpdateScore();
       this -> players_ -> GetInfo();
 
       // 게임 끝나는 조건 확인
@@ -127,9 +125,6 @@ void Util::Init() {
       //* 표시 된 공간을 다시 빈 공간으로 초기화
       this -> board_ -> ReturnBoard();
 
-
-      // 점수 출력.
-      this -> UpdateScore();
       this -> TogglePlayer();
     }
 
